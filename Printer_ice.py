@@ -39,6 +39,18 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
         def end_printString(self, _r):
             return _M_Demo.Printer._op_printString.end(self, _r)
 
+        def printUpperCase(self, s, context=None):
+            return _M_Demo.Printer._op_printUpperCase.invoke(self, ((s, ), context))
+
+        def printUpperCaseAsync(self, s, context=None):
+            return _M_Demo.Printer._op_printUpperCase.invokeAsync(self, ((s, ), context))
+
+        def printRepeat(self, s, count, context=None):
+            return _M_Demo.Printer._op_printRepeat.invoke(self, ((s, count), context))
+
+        def printRepeatAsync(self, s, count, context=None):
+            return _M_Demo.Printer._op_printRepeat.invokeAsync(self, ((s, count), context))
+
         @staticmethod
         def checkedCast(proxy, facetOrContext=None, context=None):
             return _M_Demo.PrinterPrx.ice_checkedCast(proxy, '::Demo::Printer', facetOrContext, context)
@@ -71,6 +83,12 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
         def printString(self, s, current=None):
             raise NotImplementedError("servant method 'printString' not implemented")
 
+        def printUpperCase(self, s, current=None):
+            raise NotImplementedError("servant method 'printUpperCase' not implemented")
+
+        def printRepeat(self, s, count, current=None):
+            raise NotImplementedError("servant method 'printRepeat' not implemented")
+
         def __str__(self):
             return IcePy.stringify(self, _M_Demo._t_PrinterDisp)
 
@@ -80,8 +98,77 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
     Printer._ice_type = _M_Demo._t_PrinterDisp
 
     Printer._op_printString = IcePy.Operation('printString', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), None, ())
+    Printer._op_printUpperCase = IcePy.Operation('printUpperCase', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), None, ())
+    Printer._op_printRepeat = IcePy.Operation('printRepeat', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0), ((), IcePy._t_int, False, 0)), (), None, ())
 
     _M_Demo.Printer = Printer
     del Printer
+
+_M_Demo._t_Calculator = IcePy.defineValue('::Demo::Calculator', Ice.Value, -1, (), False, True, None, ())
+
+if 'CalculatorPrx' not in _M_Demo.__dict__:
+    _M_Demo.CalculatorPrx = Ice.createTempClass()
+    class CalculatorPrx(Ice.ObjectPrx):
+
+        def add(self, a, b, context=None):
+            return _M_Demo.Calculator._op_add.invoke(self, ((a, b), context))
+
+        def addAsync(self, a, b, context=None):
+            return _M_Demo.Calculator._op_add.invokeAsync(self, ((a, b), context))
+
+        def multiply(self, a, b, context=None):
+            return _M_Demo.Calculator._op_multiply.invoke(self, ((a, b), context))
+
+        def multiplyAsync(self, a, b, context=None):
+            return _M_Demo.Calculator._op_multiply.invokeAsync(self, ((a, b), context))
+
+        @staticmethod
+        def checkedCast(proxy, facetOrContext=None, context=None):
+            return _M_Demo.CalculatorPrx.ice_checkedCast(proxy, '::Demo::Calculator', facetOrContext, context)
+
+        @staticmethod
+        def uncheckedCast(proxy, facet=None):
+            return _M_Demo.CalculatorPrx.ice_uncheckedCast(proxy, facet)
+
+        @staticmethod
+        def ice_staticId():
+            return '::Demo::Calculator'
+    _M_Demo._t_CalculatorPrx = IcePy.defineProxy('::Demo::Calculator', CalculatorPrx)
+
+    _M_Demo.CalculatorPrx = CalculatorPrx
+    del CalculatorPrx
+
+    _M_Demo.Calculator = Ice.createTempClass()
+    class Calculator(Ice.Object):
+
+        def ice_ids(self, current=None):
+            return ('::Demo::Calculator', '::Ice::Object')
+
+        def ice_id(self, current=None):
+            return '::Demo::Calculator'
+
+        @staticmethod
+        def ice_staticId():
+            return '::Demo::Calculator'
+
+        def add(self, a, b, current=None):
+            raise NotImplementedError("servant method 'add' not implemented")
+
+        def multiply(self, a, b, current=None):
+            raise NotImplementedError("servant method 'multiply' not implemented")
+
+        def __str__(self):
+            return IcePy.stringify(self, _M_Demo._t_CalculatorDisp)
+
+        __repr__ = __str__
+
+    _M_Demo._t_CalculatorDisp = IcePy.defineClass('::Demo::Calculator', Calculator, (), None, ())
+    Calculator._ice_type = _M_Demo._t_CalculatorDisp
+
+    Calculator._op_add = IcePy.Operation('add', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_int, False, 0), ((), IcePy._t_int, False, 0)), (), ((), IcePy._t_int, False, 0), ())
+    Calculator._op_multiply = IcePy.Operation('multiply', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_int, False, 0), ((), IcePy._t_int, False, 0)), (), ((), IcePy._t_int, False, 0), ())
+
+    _M_Demo.Calculator = Calculator
+    del Calculator
 
 # End of module Demo
